@@ -5,3 +5,5 @@
 /Images/*
 /.cache/*
 /.ipython/*
+/.keras/*
+/__pycache__/*
