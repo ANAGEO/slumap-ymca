@@ -5,7 +5,7 @@ import numpy as np
 def stackage(list_raster):
     stack = []
     for patch in list_raster :
-        pat = gdal.Open(patch)
+        pat = gdal.Open(patch.decode('ascii'))
         data_rast = pat.ReadAsArray().astype(np.float32)
         data_rast = np.transpose(data_rast,(1,2,0))
         stack.append(data_rast)
