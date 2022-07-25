@@ -37,9 +37,9 @@ def chunckage(folder_raster,filename_raster,format_rast,folder_vector, filename_
     for feat in layer: #une boucle sur les polygones dans la couche vectorielle
             polygone = feat.GetGeometryRef().ExportToJson() #extraire les données géométriques et exporter en format JSON
             list_coord = extract_coord(polygone) #extraction des coordonnées des polygones
-            print(list_coord)
+            #print(list_coord)
             poly_id = int(feat.GetField("id")) #extraire le id de l'object
-            print(poly_id)
+            #print(poly_id)
             
             if lulc_yes == 1 : 
                 lulc = int(feat.GetField("lulc")) #extraire le lulc (si slum ou pas slum) de l'object
