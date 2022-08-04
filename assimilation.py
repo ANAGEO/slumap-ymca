@@ -50,10 +50,10 @@ def assimilation(patch_id_train, patch_id_test, patch_lulc_test,path_raster):
         image = path.split(b'/')[-1]
         image_id = int(image.split(b'_')[-2])
         if image_id in patch_id_train_list :
-            index = patch_id_train_list.index(image_id)
+            index = patch_id_train_list.index(int(image_id))
             train_path[index] = path
         elif image_id in patch_id_test_list :
-            index = patch_id_test_list.index(image_id)
+            index = patch_id_test_list.index(int(image_id))
             test_path[index] = path
 
     #stack = stackage(train_path)
