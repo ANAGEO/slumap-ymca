@@ -1,3 +1,50 @@
+'''
+This module has been coded to warp raster images from a GeoPackage. It contains two functions : extract_coord() that extracts coordinates from the GeoPackage and chunkage() that warps the raster.
+
+Inputs of chunckage()
+
+folder_raster : Directory of the raster that must be warped AND the directory of the warped rasters --> MUST BE A STRING (e.g. "/home/libraries/")
+filename_raster : Name of the raster that must be warped --> MUST BE A STRING (e.g. "raster")
+format_rast : Format of the raster that must be warped  --> MUST BE A STRING (e.g. ".tif")
+
+folder_vector : Directory of the vector that is used to warp the raster --> MUST BE A STRING (e.g. "/home/vector/")
+filename_vector : Name of the vector with its extension that is used to warp the raster --> MUST BE A STRING AND MUST BE A GEOPACKAGE (.gpkg) (e.g. "vector.gpkg")
+
+output_name : Part of the name of the output warped rasters --> MUST BE A STRING
+
+id_field : Name of the field that contains the id of the object in the vectorfile --> MUST BE A STRING
+lulc_field : Name of the field that contains the label of the object in the vectorfile --> MUST BE A STRING
+
+lulc_yes : Take 0 --> The module DO NOT extract the values in the lulc_field
+                        Example of a warped raster name :
+                            (output_name)_(id_field)
+                                   raster_1234.tif
+           Take 1 --> The module extract the values in the lulc_field
+                            (output_name)_(id_field)_(lulc_field)
+                                   raster_1234_0.tif
+
+Outputs of chunckage()
+
+if lulc_yes == 0 :
+    listvrt :  A list that contains the path of each raster
+    patch_id :  A list that contains the id of each raster
+    
+if lulc_yes == 1 :
+    The same output as lulc_yes == 0 more :
+       patch_lulc :  A list that contains the label of each raster
+       
+       
+This module as been created in the frame of an internship at ANAGEO Labs (Université Libre de Bruxelles) :
+    https://cvchercheurs.ulb.ac.be/Site/unite/ULB568UK.php
+    https://github.com/ANAGEO
+    
+Name : Julien Govoorts
+Contact : julien.govoorts@ulb.be or gmail.com
+This module is coming from : https://github.com/jgovoort/docker-jupyter
+
+'''
+
+
 from osgeo import gdal
 from osgeo import ogr
 import os, sys
@@ -17,7 +64,7 @@ def extract_coord(output_poly): #fonction pour extraire les coordonnées géogra
     return xmin,ymin,xmax,ymax
 
 
-def chunckage(folder_raster,filename_raster,format_rast,folder_vector, filename_vector, output_name, lulc_yes):
+def chunckage(folder_raster,filename_raster,format_rast,folder_vector, filename_vector, output_name, id_field, lulc_field, lulc_yes):
     
     rast = gdal.Open(folder_raster+filename_raster+format_rast) #ouverture du raster
 
@@ -38,11 +85,11 @@ def chunckage(folder_raster,filename_raster,format_rast,folder_vector, filename_
             polygone = feat.GetGeometryRef().ExportToJson() #extraire les données géométriques et exporter en format JSON
             list_coord = extract_coord(polygone) #extraction des coordonnées des polygones
             #print(list_coord)
-            poly_id = int(feat.GetField("id")) #extraire le id de l'object
+            poly_id = int(feat.GetField(id_field)) #extraire le id de l'object
             #print(poly_id)
             
             if lulc_yes == 1 : 
-                lulc = int(feat.GetField("lulc")) #extraire le lulc (si slum ou pas slum) de l'object
+                lulc = int(feat.GetField(lulc_field)) #extraire le lulc (si slum ou pas slum) de l'object
                 name_file= output_name+'_'+str(poly_id)+'_'+str(lulc)+'.tif' #création du nom du fichier de sortie
                 patch_lulc.append(lulc) #enregistrement dans une liste si le patch est un slum ou pas
             elif lulc_yes == 0 :
