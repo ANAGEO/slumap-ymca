@@ -1,11 +1,29 @@
 # Welcome to the Read me of my jupyter on Docker
-## This Git containt :
+## This Git contains :
+### Jupyter notebooks
 
 - slumage.ipynb : A Jupyter Notebook that is used to manipulate sentinel images. It is able to warp raster images based on a vectorized grid.
-- Deep_Nairobi : A Jupyter Notebook that contains multiples deep learning model based on tensorflow.
+- Deep_Nairobi.ipynb : A Jupyter Notebook that contains multiples deep learning models based on tensorflow libraries.
+- Ymodel.ipynb : Model based on the given model of Rowel Atienza. It has been modified to reduce the overfitting and to work with the data.
+- Ymodel-kfold.ipynb : Model based on the given model of Rowel Atienza. It has been modified to reduce the overfitting and to work with the data. The pre-processing code has been modified to work with a kfolding.
+- k-fold_processing.ipynb : A Jupyter notebook uses to create the kfold list.
+- Interceptor.ipynb : Use to know whether an shapefile intercept another one. I'll disappear in few days.
+
+
+### Python modules
+
 - stackage.py : A python homemade function that is used to create an array of raster data based on a list of path.
-- chunkage.py : Python homemade function that warp an image with a vectorized grid.
-- slumage.py : (**OUTDATED**) Python code that will disappear in few days.
+- chunkage.py : Python homemade function that warp an image from a vectorized grid.
+- CircleMaker.py : Module uses to plot a pie plot to inspect the partition of test and validation patches.
+
+## Other folders :
+
+- CLUSTER : will desappear.
+- CSV : corresponds to the outputs of previous models and run of the Ymodel.
+- SRC : Python modules imported from https://github.com/tgrippa/Partimap.
+- checkpoint : Checkpoints that contain the weight of each run of the model.
+- ogr : will desappear.
+- OutputCSV : corresponds to the outputs of the Ymodel-kfold.
 
 ## Background of the repository : 
 
