@@ -9,3 +9,7 @@
 /__pycache__/*
 /TensorFlow-Tutorials/*
 /Images/*
+/outputCSV/*
+/checkpoint/*
+/checkpoints/*
+/previous_test/*
