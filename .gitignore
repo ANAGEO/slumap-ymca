@@ -13,3 +13,6 @@
 /checkpoint/*
 /checkpoints/*
 /previous_test/*
+/FORKchekpoint/*
+/FORKoutputCSV/*
+/ogr/*

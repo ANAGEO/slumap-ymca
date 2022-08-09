@@ -1,2 +1,2 @@
-model_checkpoint_path: "checkpoint_BNIR_1"
-all_model_checkpoint_paths: "checkpoint_BNIR_1"
+model_checkpoint_path: "checkpoint_BNIR_2"
+all_model_checkpoint_paths: "checkpoint_BNIR_2"
