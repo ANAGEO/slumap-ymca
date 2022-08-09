@@ -66,7 +66,7 @@ def assimilation(patch_id_train, patch_id_test, patch_lulc_test,path_raster):
     plt.rcParams["figure.facecolor"] = 'w'
     plt.figure(figsize=(15, 15))
     for i in range(3):
-        rd_img = np.random.randint(1,500)
+        rd_img = np.random.randint(1,300)
         ax = plt.subplot(1, 3, i + 1)
         plt.imshow(Norma_Xpercentile(stack_test[rd_img,:,:,:]))
         plt.axis("off")
