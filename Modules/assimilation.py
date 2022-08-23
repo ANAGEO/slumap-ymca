@@ -56,26 +56,31 @@ def assimilation(patch_id_train, patch_id_test, patch_lulc_test,path_raster):
             index = patch_id_test_list.index(int(image_id))
             test_path[index] = path
 
-    #stack = stackage(train_path)
+
 
     stack_train = stackage(train_path)
-    #stack = stackage(test_path)
+
     stack_test = stackage(test_path)
 
-    
-    plt.rcParams["figure.facecolor"] = 'w'
-    plt.figure(figsize=(15, 15))
-    for i in range(3):
+    if  stack_test.shape[-1] >= 3 :    
+        plt.rcParams["figure.facecolor"] = 'w'
+        plt.figure(figsize=(15, 15))
+        for i in range(3):
+            rd_img = np.random.randint(1,300)
+            ax = plt.subplot(1, 3, i + 1)
+            plt.imshow(Norma_Xpercentile(stack_test[rd_img,:,:,:]))
+            plt.axis("off")
+            plt.title("Random indx: %s\nID: %s\nlulc: %0.3f" %(rd_img,patch_id_test[rd_img],patch_lulc_test[rd_img]))
+            print(stack_test[rd_img,0,0,:])
+            print(test_path[rd_img])
+            print(patch_id_test[rd_img])
+        #plt.subplots_adjust(hspace=0.001)
+        plt.tight_layout()
+    else :
         rd_img = np.random.randint(1,300)
-        ax = plt.subplot(1, 3, i + 1)
-        plt.imshow(Norma_Xpercentile(stack_test[rd_img,:,:,:]))
-        plt.axis("off")
-        plt.title("Random indx: %s\nID: %s\nlulc: %0.3f" %(rd_img,patch_id_test[rd_img],patch_lulc_test[rd_img]))
         print(stack_test[rd_img,0,0,:])
         print(test_path[rd_img])
         print(patch_id_test[rd_img])
-    #plt.subplots_adjust(hspace=0.001)
-    plt.tight_layout() 
     
     stack_train = normalise_01(stack_train)
     stack_test = normalise_01(stack_test)
