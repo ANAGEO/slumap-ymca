@@ -2,15 +2,11 @@
 ## This Git contains :
 ### Jupyter notebooks
 
-- slumage.ipynb : A Jupyter Notebook that is used to manipulate sentinel images. It is able to warp raster images based on a vectorized grid.
-- Deep_Nairobi.ipynb : A Jupyter Notebook that contains multiples deep learning models based on tensorflow libraries.
-- Ymodel.ipynb : Model based on the given model of Rowel Atienza. It has been modified to reduce the overfitting and to work with the data.
-- Ymodel-kfold.ipynb : Model based on the given model of Rowel Atienza. It has been modified to reduce the overfitting and to work with the data. The pre-processing code has been modified to work with a kfolding.
+- Preprocessing_Ymodel.ipynb : Notebook use to merge all the Sentinel-1/2 images and to clip it according to the grid and the validation/training patches.
+- YMCA-kfold.ipynb : Model based on the given model of Rowel Atienza. It has been modified to reduce the overfitting and to work with the data. The pre-processing code has been modified to work with a kfolding.
 - k-fold_processing.ipynb : A Jupyter notebook uses to create the kfold list.
-- Interceptor.ipynb : Use to know whether an shapefile intercept another one. I'll disappear in few days.
 
-
-### Python modules
+### Python modules in MODULE
 
 - stackage.py : A python homemade function that is used to create an array of raster data based on a list of path.
 - chunkage.py : Python homemade function that warp an image from a vectorized grid.

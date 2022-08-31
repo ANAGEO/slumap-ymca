@@ -15,7 +15,10 @@
 /previous_test/*
 /FORKchekpoint/*
 /FORKoutputCSV/*
+/outputgraph/*
 /ogr/*
+/Modules/.ipynb_checkpoints/*
+/Modules/__pycache__/*
 /tensorflow_datasets/*
 /Poseidon.ipynb
 /slumage.ipynb
