@@ -13,16 +13,21 @@ This module is coming from : https://github.com/jgovoort/docker-jupyter
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+import numpy as np
 
-def plotandcsv_history_kfold(HISTALL, idx) :
+def plotandcsv_history_kfold(HISTALL, idx, vvvh) :
     
     if idx == 'ALL' :
         for i in range(len(HISTALL)) :
-            plotandcsv_history_kfold(HISTALL, i)
+            plotandcsv_history_kfold(HISTALL, i, vvvh)
     else :
-    
-        IMAGENAME = ['BNIR','RNIR','RGBNIR']
-
+        
+        if vvvh == 1 :
+            IMAGENAME = ['VVVH_BNIR','VVVH_RNIR','VVVH_RGBNIR']
+        elif vvvh == 0 : 
+            IMAGENAME = ['BNIR','RNIR','RGBNIR']
+        
+        
         MINLOSS = []
         MAXLOSS = []
         MINVALLOSS = []
@@ -103,7 +108,9 @@ def plotandcsv_history_kfold(HISTALL, idx) :
         plt.ylabel('Mean loss')
         plt.legend(['Mean : Training loss','Training loss standard deviation','Mean : Validation loss', 'Validation loss standard deviation'], title = "Legend")
         plt.title('Validation and training loss for the dataset '+str(IMAGENAME[idx]))
+        plt.savefig('outputCSV/fig/LOSS_'+str(IMAGENAME[idx])+'.png')
         plt.show()
+        
 
         f = plt.figure(figsize = (20,10))
         
@@ -124,6 +131,6 @@ def plotandcsv_history_kfold(HISTALL, idx) :
         plt.ylabel('Mean accuracy')
         plt.title('Validation and training accuracy for the dataset '+str(IMAGENAME[idx]))
         plt.legend(['Mean : Training accuracy','Training accuracy standard deviation','Mean : Validation accuracy', 'Validation accuracy standard deviation'], title = "Legend")
+        plt.savefig('outputCSV/fig/ACC_'+str(IMAGENAME[idx])+'.png')
         plt.show()
         
-
