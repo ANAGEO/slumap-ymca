@@ -17,6 +17,7 @@
 /FORKoutputCSV/*
 /outputgraph/*
 /ogr/*
+/CSV/*
 /Modules/.ipynb_checkpoints/*
 /Modules/__pycache__/*
 /tensorflow_datasets/*
