@@ -1,3 +1,5 @@
+from osgeo import gdal, ogr
+
 '''
 
 This function automatically merge multiple rasters with a SINGLE band to a raster with multiple bands like RGB.
